@@ -1,0 +1,2 @@
+rootProject.name = "JP-Android-Challenge"
+include ':app'
