@@ -7,13 +7,25 @@ import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
 class MainApplication : Application() {
-    /*companion object{
-         var user: User? = null
-    }*/
+
+    override fun onCreate() {
+        super.onCreate()
+        myApplication = this
+    }
 
     override fun attachBaseContext(base: Context) {
         super.attachBaseContext(base)
 
+    }
+
+    companion object {
+        private lateinit var myApplication: MainApplication
+        fun  getInstance(): MainApplication {
+            if (!this::myApplication.isInitialized || myApplication == null) {
+                myApplication = MainApplication()
+            }
+            return myApplication
+        }
     }
 
 }
