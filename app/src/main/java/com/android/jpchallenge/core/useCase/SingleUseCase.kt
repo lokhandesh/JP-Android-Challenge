@@ -29,4 +29,5 @@ abstract class SingleUseCase<T> : UseCase() {
             compositeDisposable.add(it)
         }
     }
+
 }

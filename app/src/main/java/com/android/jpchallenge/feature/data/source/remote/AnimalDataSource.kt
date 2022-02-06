@@ -15,7 +15,7 @@ abstract class AnimalDataSource {
 
 }
 
-class AnimalSourceImp @Inject constructor(
+class AnimalDataSourceImpl @Inject constructor(
     private val retrofitService: RetrofitService
 ) : AnimalDataSource() {
 

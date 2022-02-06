@@ -7,7 +7,7 @@ import com.android.jpchallenge.BuildConfig
 import com.android.jpchallenge.core.api.RetrofitService
 import com.android.jpchallenge.feature.data.repository.AnimalRepositoryImp
 import com.android.jpchallenge.feature.data.source.remote.AnimalDataSource
-import com.android.jpchallenge.feature.data.source.remote.AnimalSourceImp
+import com.android.jpchallenge.feature.data.source.remote.AnimalDataSourceImpl
 import com.android.jpchallenge.feature.domain.repository.AnimalRepository
 import com.google.gson.Gson
 import dagger.Module
@@ -106,7 +106,7 @@ class NetworkModule {
     fun provideTransactionDataSource(
         retrofitService: RetrofitService
     ): AnimalDataSource {
-        return AnimalSourceImp(retrofitService)
+        return AnimalDataSourceImpl(retrofitService)
     }
 
 }
