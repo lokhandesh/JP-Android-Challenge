@@ -14,13 +14,14 @@ class AnimalListAdapter(var list : List<Animal.AnimalItem>) : RecyclerView.Adapt
         fun bind(animalItem: Animal.AnimalItem) {
             binding.txtName.text = animalItem.name
             binding.txtLatinName.text = animalItem.latin_name
-            binding.txtDiet.text = "Diet : "+animalItem.diet
+            binding.txtDiet.text = "Diet : ${animalItem.diet}"
             if (animalItem.lifespan.toInt()>20) {
-                binding.txtLifespan.text = "Lifespan : "+animalItem.lifespan + " yrs " + "(A long time)"
+              //  binding.txtLifespan.text = "Lifespan : "+animalItem.lifespan + " yrs " + "(A long time)"
+                binding.txtLifespan.text = "Lifespan : ${animalItem.lifespan} yrs (A long time)"
             } else if (animalItem.lifespan.toInt() in 11..20) {
-                binding.txtLifespan.text = "Lifespan : "+animalItem.lifespan + " yrs " + "(kind of average)"
+                binding.txtLifespan.text = "Lifespan : ${animalItem.lifespan} yrs (kind of average)"
             } else {
-                binding.txtLifespan.text = "Lifespan : "+animalItem.lifespan + " yrs " + "(Not very long!)"
+                binding.txtLifespan.text = "Lifespan : ${animalItem.lifespan} yrs (Not very long!)"
             }
             Glide.with(MainApplication.getInstance().applicationContext)
                 .load(animalItem.image_link)

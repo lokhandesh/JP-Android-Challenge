@@ -26,6 +26,10 @@ class AnimalListFragment : Fragment() {
     private val viewModel: AnimalListFragmentViewModel by viewModels()
     private lateinit var  adapter : AnimalListAdapter
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -60,7 +64,6 @@ class AnimalListFragment : Fragment() {
             requireView().showSnack("There is some API error")
             binding.progressBar.visibility = View.INVISIBLE
         })
-        viewModel.fetchAnimalList()
     }
 
     private fun callSwipeToRefresh() {

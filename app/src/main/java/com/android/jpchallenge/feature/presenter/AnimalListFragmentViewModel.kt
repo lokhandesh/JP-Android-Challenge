@@ -13,6 +13,10 @@ class AnimalListFragmentViewModel @Inject constructor(private val animalListUseC
     val animalData = MutableLiveData<Animal>()
     val errorResponse = MutableLiveData<Boolean>()
 
+    init {
+        fetchAnimalList()
+    }
+
     fun fetchAnimalList() {
         animalListUseCase.execute(
             onSuccess = {
