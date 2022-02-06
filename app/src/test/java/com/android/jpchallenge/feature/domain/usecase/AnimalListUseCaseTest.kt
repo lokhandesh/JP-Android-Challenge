@@ -51,13 +51,6 @@ class AnimalListUseCaseTest {
         assert(!result.blockingGet().isNullOrEmpty())
     }
 
-    @Test
-    fun testbuildUseCaseSingleSuccessList1() {
-        Mockito.doReturn(animal).`when`(animalRepository).fetchAnimalList()
-        var result = animalListUseCase.buildTest()
-        assert(!result)
-    }
-
 
 
 }

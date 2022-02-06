@@ -49,6 +49,13 @@ class AnimalDataSourceImplTest  {
         assert(!result.blockingGet().isNullOrEmpty())
     }
 
+    @Test
+    fun testFetchAnimalListFail() {
+        Mockito.doReturn(Single.just(Animal())).`when`(retrofitService).fetchAnimalList()
+        var result = animalDataSourceImpl.fetchAnimalList()
+        assert(result.blockingGet().isNullOrEmpty())
+    }
+
 
 
 }

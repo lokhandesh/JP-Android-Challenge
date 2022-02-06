@@ -12,10 +12,4 @@ class AnimalListUseCase @Inject constructor(private val repository: AnimalReposi
     override fun buildUseCaseSingle(): Single<Animal> {
         return repository.fetchAnimalList()
     }
-
-    fun buildTest(): Boolean {
-        return (repository.fetchAnimalList()
-            .blockingGet().isEmpty()
-                )
-    }
 }
