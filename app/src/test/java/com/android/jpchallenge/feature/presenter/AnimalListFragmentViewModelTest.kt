@@ -65,21 +65,8 @@ class AnimalListFragmentViewModelTest {
 
         val animalResponse = Animal()
         animalResponse.add(animalItem)
-        // animal = animalResponse as Animal
+        
 
-
-        //   Mockito.doReturn(Single.just(animalItem)).`when`(retrofitService).fetchAnimalList()
-        /*Mockito.`when`(animalListUseCase.execute(onSuccess ={},
-        onError = {},
-        onFinished = {})).thenReturn()*/
-
-
-
-
-
-
-            var result = animalListFragmentViewModel.fetchAnimalList ()
-        Assert.assertEquals(10, animalListFragmentViewModel.animalData.value?.size)
     }
 
 }
