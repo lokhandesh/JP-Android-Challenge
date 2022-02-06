@@ -36,7 +36,7 @@ class AnimalListAdapter(var list : List<Animal.AnimalItem>) : RecyclerView.Adapt
 
     override fun getItemCount() = list.size
 
-    fun setItem(listOfData: List<Animal.AnimalItem>) {
+    fun setItem(listOfData: ArrayList<Animal.AnimalItem>) {
         this.list = listOfData.sortedBy { list -> list.name }
         notifyDataSetChanged()
     }

@@ -82,5 +82,17 @@
                 app:layout_constraintStart_toEndOf="@+id/animal_icon"
                 app:layout_constraintTop_toBottomOf="@+id/txt_diet" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_margin="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/animal_icon"
+        app:layout_constraintStart_toEndOf="@+id/animal_icon"
+        app:layout_constraintTop_toBottomOf="@+id/txt_lifespan"/>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

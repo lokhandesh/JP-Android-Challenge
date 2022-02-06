@@ -1,17 +1,21 @@
 package com.android.jpchallenge.feature.presenter
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
 import com.android.jpchallenge.databinding.FragmentAnimalListBinding
 import com.android.jpchallenge.utility.showSnack
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.concurrent.Executors
+import java.util.concurrent.TimeUnit
+
 
 @AndroidEntryPoint
 class AnimalListFragment : Fragment() {
@@ -43,12 +47,12 @@ class AnimalListFragment : Fragment() {
         binding.animalRecyclerView.adapter = adapter
 
         initObserver()
+        callSwipeToRefresh()
     }
 
     private fun initObserver() {
         viewModel.animalData.observe(viewLifecycleOwner, {
             animalList ->
-            Log.i("",""+animalList)
             adapter.setItem(animalList)
             binding.progressBar.visibility = View.INVISIBLE
         })
@@ -58,6 +62,23 @@ class AnimalListFragment : Fragment() {
         })
         viewModel.fetchAnimalList()
     }
+
+    private fun callSwipeToRefresh() {
+        binding.swipeContainer.setOnRefreshListener(OnRefreshListener {
+            viewModel.fetchAnimalList()
+            Executors.newSingleThreadScheduledExecutor().schedule({
+                binding.swipeContainer.setRefreshing(false)
+            }, 3, TimeUnit.SECONDS)
+
+        })
+        binding.swipeContainer.setColorSchemeColors(
+            ContextCompat.getColor(requireContext(),android.R.color.holo_blue_bright),
+            ContextCompat.getColor(requireContext(),android.R.color.holo_green_light),
+            ContextCompat.getColor(requireContext(),android.R.color.holo_orange_light),
+            ContextCompat.getColor(requireContext(),android.R.color.holo_red_light)
+        );
+    }
+
 
 
 }
